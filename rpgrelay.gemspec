@@ -1,7 +1,6 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "v8/version"
-require 'pathname'
+#require "v8/version"
 
 Gem::Specification.new do |s|
   s.name = "rpgrelay"
@@ -13,8 +12,8 @@ Gem::Specification.new do |s|
   s.email = "oomushi@gmail.com"
 
   root = Pathname(__FILE__).dirname
-  s.files = `git ls-files`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  s.files =  Dir.glob '**/*'
+  s.executables   =  Dir.glob 'bin/**/*'
   s.require_paths = ["lib"]
 
   s.add_dependency "mini-smtp-server"
