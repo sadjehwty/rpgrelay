@@ -1,5 +1,5 @@
-#!/bin/env ruby
-# -*- encoding: utf-8 -*-
+#!/usr/bin/ruby
+# -*- encoding : utf-8 -*-
 require 'rubygems'
 require 'yaml'
 require 'openpgp'
@@ -9,7 +9,8 @@ if File.exists? dir
   cfg=YAML.load_file dir
 elsif system 'gpg -k'
   ret=`gpg -k`
-  ret.split("\n")[0]
+  ret=ret.split("\n")[0]
+  ret=ret[0..ret.rindex('/')]
   cfg={:home=>ret}
   File.open(dir,'w'){|f| f.write cfg.to_yaml}
 else
